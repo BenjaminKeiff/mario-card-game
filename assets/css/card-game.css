@@ -1,0 +1,158 @@
+@font-face {
+    font-family: 'Super Mario Bros. NES';
+    src: url(../font/super-mario-bros-nes.ttf) format('truetype');
+}
+
+* {
+    font-family: 'Super Mario Bros. NES', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #010001;
+    color: whitesmoke;
+    width: 100vw;
+    height: 100vh;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section div {
+    margin-top: 15px;
+    display: grid;
+    background-color: #010001;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 60px;
+    grid-row-gap: 80px;
+}
+
+section div div {
+    width: 160px;
+    height: 221px;
+    background-image: url(../img/card-back.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    grid-column: 1 span;
+    perspective: 1000px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    object-fit: cover;
+    transform-origin: 50% 50%;
+    transform: rotateY(0deg);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+section div div.hover {
+    outline: #df962f 10px ridge;
+}
+
+.cards.turn {
+    transform: rotateY(180deg);
+    transform-origin: 50% 50%;
+    transition: transform 0.6s;
+}
+
+.flower.turn{
+    background-image: url(../img/card-flower.png);
+}
+
+.star.turn{
+    background-image: url(../img/card-star.png);
+}
+
+.up.turn{
+    background-image: url(../img/card-1up.png);
+}
+
+.mushroom.turn{
+    background-image: url(../img/card-mushrom.png);
+}
+
+.coins10.turn{
+    background-image: url(../img/card-10coins.png);
+}
+
+.coins20.turn{
+    background-image: url(../img/card-20coins.png);
+}
+
+#popUp {
+    display: none;
+}
+
+#popUp.active {
+    display: block;
+    text-align: center;
+    width: 800px;
+}
+
+#popUp h1 {
+    font-size: 36px;
+}
+
+#popUp h2 {
+    font-size: 46px;
+}
+
+#popUp h3 {
+    font-size: 85px;
+}
+
+#popUp.active h1,#popUp.active h2,#popUp.active h3 {
+    position: relative;
+    top: 150px;
+}
+
+#win,#loose {
+    display: none;
+}
+
+#win.active,#loose.active {
+    display: inline;
+    text-align: center;
+}
+
+ul li {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 15px;
+    font-size: 28px;
+    position: relative;
+    top: 150px;
+}
+
+ul li:hover {
+    cursor: pointer;
+    padding: 15px;
+    outline: whitesmoke 10px ridge;
+    color: #010001;
+    background-color: whitesmoke;
+}
+
+#difficulty.hidden {
+    display: none;
+}
+
+ul li:hover:last-child {
+    cursor: not-allowed;
+}
+
+#tableau.hidden {
+    display: none;
+}
+
+#tableau {
+    display: grid;
+}
+
+#tableau.easy {
+    grid-template-columns: repeat(4, 1fr);
+} 
