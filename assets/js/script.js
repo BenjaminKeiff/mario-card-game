@@ -17,42 +17,8 @@ const win = document.querySelector("#win");
 const loose = document.querySelector("#loose")
 const winOrLoose = document.querySelector('#winOrLoose');
 const difficulty = document.querySelector('#difficulty');
-let tabCards = ["flower","flower","flower","flower",
-                    "star","star","star","star","up","up",
-                    "mushroom","mushroom","mushroom","mushroom",
-                    "coins20","coins20","coins10","coins10"];
-
-const tabCardsEasy = ["flower","flower","flower","flower",
-                "star","star","mushroom","mushroom","mushroom",
-                "mushroom","coins10","coins10"];
 
 chooseDifficulty();
-
-tabCards.forEach(element => {
-    let toDoList = document.createElement("div");
-    toDoList.setAttribute("name", element);
-    toDoList.classList.add("cards",element);
-    tableau.append(toDoList);
-});
-
-setTimeout(()=> {
-    let allCards = document.querySelectorAll('.cards');
-    allCards.forEach((card)=> {
-        card.addEventListener('click', () =>{
-            if (card.classList[3] != 'turn' && card.classList[2] != 'turn') {
-                flipCard(card);
-            }
-        });
-        card.addEventListener('mouseover', () =>{
-            jouerEffetSonore(cardSelected)
-            cardHover(card) 
-
-        })
-        card.addEventListener('mouseout', () =>{
-            cardHover(card) 
-        })
-    })
-}, 100)  
 
 function jouerEffetSonore(effect) {
     effect.currentTime = 0; // Réinitialise la lecture à partir du début
@@ -78,8 +44,7 @@ function cardHover(card) {
     card.classList.toggle("hover");
     }
 
-function compare(card1,card2,cardName1,cardName2,cardsTurn) 
-    {
+function compare(card1,card2,cardName1,cardName2,cardsTurn) {
         let itm1 = cardName1;
         let itm2 = cardName2;
         setTimeout(()=> {
@@ -157,36 +122,52 @@ function chooseDifficulty(){
             jouerEffetSonore(choose);
         })
         myChoice.addEventListener('click', () =>{
+            let tab = [];
             tableau.classList.remove('hidden');
             popUp.classList.remove('active'); 
-            const nbrcardsTurn = document.querySelectorAll(".cards");
-            nbrcardsTurn.forEach(element => {
-                element.classList.add("turn");
-            });
+
             if (myChoice.getAttribute('name') === "easy") {
-                timeDifficulty(2000);
                 tableau.classList.add('easy');
+                tab = tabDifficult('easy');
+                shakeTab(tab);
+                createTab(tab);
+                tabAppear()
+                timeDifficulty(2000);
+                game();
             }
 
             else if (myChoice.getAttribute('name') === "medium") {
-                timeDifficulty(1000);
                 tableau.classList.add('easy');
+                tab = tabDifficult('medium');
+                shakeTab(tab);
+                createTab(tab);
+                tabAppear()
+                timeDifficulty(1000);
+                game();
             }
 
             else if (myChoice.getAttribute('name') === "hard") {
+                tab = tabDifficult('hard');
+                shakeTab(tab);
+                createTab(tab);
+                tabAppear()
                 timeDifficulty(1000);
+                game();
             }
 
             else {
+                tab = tabDifficult('hardcore');
+                shakeTab(tab);
+                createTab(tab);
+                tabAppear()
                 timeDifficulty(100);
+                game();
             }
             world1.pause()
             fondSonore(spadeBonus)
             difficulty.classList.add('hidden')
         });
-    })  
-    tabDifficult(tableau.classList.value)
-    shakeTab(tabCards);
+    })
 }
 
 function timeDifficulty(time){
@@ -204,7 +185,6 @@ function fondSonore(musique) {
 }
 
 function tabDifficult(input){
-    console.log(input);
     if (input === "easy" || input === "medium") {
         return tabCards = ["flower","flower","flower","flower",
         "star","star","mushroom","mushroom","mushroom",
@@ -217,3 +197,39 @@ function tabDifficult(input){
     }
 }
 
+function createTab(tab) {
+    tab.forEach(element => {
+        let popUp = document.createElement("div");
+        popUp.setAttribute("name", element);
+        popUp.classList.add("cards",element);
+        tableau.append(popUp);
+    });
+}
+
+function game() {
+    setTimeout(()=> {
+        let allCards = document.querySelectorAll('.cards');
+        allCards.forEach((card)=> {
+            card.addEventListener('click', () =>{
+                if (card.classList[3] != 'turn' && card.classList[2] != 'turn') {
+                    flipCard(card);
+            }
+        });
+        card.addEventListener('mouseover', () =>{
+            jouerEffetSonore(cardSelected)
+            cardHover(card) 
+            
+        })
+        card.addEventListener('mouseout', () =>{
+            cardHover(card) 
+        })
+        })
+    }, 100) 
+}
+
+function tabAppear() {
+    const nbrcardsTurn = document.querySelectorAll(".cards");
+    nbrcardsTurn.forEach(element => {
+        element.classList.add("turn");
+    });
+}
