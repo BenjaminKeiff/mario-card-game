@@ -40,10 +40,6 @@ function flipCard (card){
     }
 }
 
-function cardHover(card) {
-    card.classList.toggle("hover");
-    }
-
 function compare(card1,card2,cardName1,cardName2,cardsTurn) {
         let itm1 = cardName1;
         let itm2 = cardName2;
@@ -216,12 +212,7 @@ function game() {
             }
         });
         card.addEventListener('mouseover', () =>{
-            jouerEffetSonore(cardSelected)
-            cardHover(card) 
-            
-        })
-        card.addEventListener('mouseout', () =>{
-            cardHover(card) 
+            jouerEffetSonore(cardSelected)           
         })
         })
     }, 100) 

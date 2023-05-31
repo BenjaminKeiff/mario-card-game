@@ -47,7 +47,7 @@ section div div {
     border-radius: 5px;
 }
 
-section div div.hover {
+section div div:hover {
     outline: #df962f 10px ridge;
 }
 
