@@ -1,1 +1,1 @@
-document.location.href="./pages/card-game"; 
+document.location.href="./pages/card-game.html"; 
