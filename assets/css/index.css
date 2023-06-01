@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'Super Mario Bros. NES';
+    src: url(../font/super-mario-bros-nes.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Geologica';
+    src: url(../font/Geologica-VariableFont.ttf) format('truetype');
+}
+
+*{
+    font-family: 'Geologica', sans-serif;
+}
+
+body {
+    background-color: #111111;
+    color: whitesmoke;
+}
+
+#card-game{
+    font-family: 'Super Mario Bros. NES', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+li a{
+    color: whitesmoke; 
+    text-decoration: none; 
+    font-size: xx-large;
+}
+
+li a:first-child:hover {
+    cursor: pointer;
+    padding: 15px;
+    outline: whitesmoke 10px ridge;
+    color: #010001;
+    background-color: whitesmoke;
+}
+
+header {
+   display: flex;
+   justify-content: center;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 58px;
+}
