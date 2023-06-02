@@ -104,7 +104,7 @@ function winOrLooseWindow(text1,text2,arg1) {
         win.classList.remove('active')
         loose.classList.add('active')
     }
-    winOrLoose.innerText = text1+"!!!\n\n Vous avez "+text2+"!";
+    winOrLoose.innerText = text1+"!\n\nVous avez "+text2+"!";
 }
 
 function chooseDifficulty(){
